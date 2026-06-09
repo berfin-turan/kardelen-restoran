@@ -29,11 +29,12 @@ Uygulama, müşteriler ve restoran personeli (yöneticiler) için iki farklı ar
 
 ## 📸 Ekran Görüntüleri ve Görseller
 
-* **Proje Arka Plan Görseli:** [Buradan Ulaşabilirsiniz](https://i.pinimg.com/736x/da/5f/e1/da5fe156d4e90fe5e76c477cc7dc0ad8.jpg).
-
+* **Proje Arka Plan Görseli:** [Buradan Ulaşabilirsiniz]([https://i.pinimg.com/736x/da/5f/e1/da5fe156d4e90fe5e76c477cc7dc0ad8.jpg](https://tr.pinterest.com/pin/586453182767745158/)).
+------------------------------
+![Giriş Ekranı](restoran_giris.png)
 ![Müşteri Paneli](musteri_panel.png)
 ![Personel Paneli](personel_panel.png)
-![Giriş Ekranı](restoran_giris.png)
+
 
 ## 🎥 Proje Tanıtım Videosu
 **[Tanıtım Videosunu İzle (Google Drive)](https://drive.google.com/file/d/1GpYuaPO1PZyBEmt1n1lc1M5VLkam1BIV/view?usp=sharing)**
@@ -41,4 +42,4 @@ Uygulama, müşteriler ve restoran personeli (yöneticiler) için iki farklı ar
 ---
 
 ### 👩‍💻 Geliştirici
-**Berfin Turan** *Bursa Technical University (BTÜ) - Computer Engineering, 2nd Year* *Bu proje, restoran yönetim süreçlerini dijitalleştirmek ve operasyonel verimliliği artırmak amacıyla optimize edilmiş bir ERP çözümü olarak geliştirilmiştir.*
+**Berfin Turan** 
