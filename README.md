@@ -29,7 +29,7 @@ Uygulama, müşteriler ve restoran personeli (yöneticiler) için iki farklı ar
 
 ## 📸 Ekran Görüntüleri ve Görseller
 
-* **Proje Arka Plan Görseli:** [Buradan Ulaşabilirsiniz]([https://i.pinimg.com/736x/da/5f/e1/da5fe156d4e90fe5e76c477cc7dc0ad8.jpg](https://tr.pinterest.com/pin/586453182767745158/)).
+* **Proje Arka Plan Görseli:** [Buradan Ulaşabilirsiniz](https://tr.pinterest.com/pin/586453182767745158/).
 ------------------------------
 ![Giriş Ekranı](restoran_giris.png)
 ![Müşteri Paneli](musteri_panel.png)
