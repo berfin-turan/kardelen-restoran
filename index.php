@@ -195,14 +195,13 @@ if (isset($_POST['siparis_iptal'])) {
             <h3 class="hero-title mb-4 text-center">Menümüz</h3>
             <div class="row g-3">
                 <?php
-                // Sadece personelin "Menü" olarak eklediği ürünleri çekiyoruz
                 $genel_menu = mysqli_query($conn, "SELECT * FROM mutfak_stok WHERE tur = 'menu'");
                 if (mysqli_num_rows($genel_menu) == 0) {
                     echo "<div class='col-12'><div class='alert alert-light text-center'>Menü şu an güncelleniyor.</div></div>";
                 } else {
                     while ($m = mysqli_fetch_assoc($genel_menu)) {
                         $yemek_id = $m['id'];
-                        // 🧠 Algoritma: Bu yemeğe ait siparişlerdeki yıldızların ortalamasını al
+                        // Puan ve Yorum Sorgusu
                         $puan_sorgu = mysqli_query($conn, "SELECT AVG(yildiz) as ortalama, COUNT(yildiz) as oy_sayisi FROM siparisler WHERE yemek_id = '$yemek_id' AND yildiz IS NOT NULL");
                         $puan_veri = mysqli_fetch_assoc($puan_sorgu);
                         $ortalama = $puan_veri['ortalama'] ? number_format($puan_veri['ortalama'], 1) : "0.0";
@@ -217,7 +216,27 @@ if (isset($_POST['siparis_iptal'])) {
                                         <strong><?php echo $ortalama; ?></strong>
                                         <span class="text-muted small ms-1">(<?php echo $oy_sayisi; ?>)</span>
                                     </div>
-                                    <p class='text-success fw-bold fs-4'><?php echo $m['fiyat']; ?> TL</p>
+                                    
+                                    <div class="mt-2 p-2 bg-light rounded" style="max-height: 100px; overflow-y: auto;">
+                                        <h6 class="small fw-bold text-secondary mb-1" style="font-size: 11px;">💬 Yorumlar:</h6>
+                                        <?php
+                                        $yorumlar_cek = mysqli_query($conn, "SELECT s.yorum, s.yildiz, COALESCE(k.ad_soyad, 'Eski Müşteri') as ad_soyad 
+                                                                            FROM siparisler s 
+                                                                            LEFT JOIN kullanicilar k ON s.musteri_id = k.id 
+                                                                            WHERE s.yemek_id = '$yemek_id' AND s.yorum IS NOT NULL AND s.yorum != ''");
+                                        if (mysqli_num_rows($yorumlar_cek) == 0) {
+                                            echo "<small class='text-muted italic' style='font-size: 10px;'>Henüz yorum yok.</small>";
+                                        } else {
+                                            while ($dyorum = mysqli_fetch_assoc($yorumlar_cek)) {
+                                                echo "<div class='border-bottom pb-1 mb-1' style='font-size: 10px;'>
+                                                        <strong class='text-dark'>".htmlspecialchars($dyorum['ad_soyad']).":</strong> 
+                                                        <span class='text-secondary'>\"".htmlspecialchars($dyorum['yorum'])."\"</span>
+                                                    </div>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                    <p class='text-success fw-bold fs-4 mt-2'><?php echo $m['fiyat']; ?> TL</p>
                                 </div>
                                 <form action='index.php' method='POST' class="mt-auto">
                                     <input type='hidden' name='yemek_id' value='<?php echo $m['id']; ?>'>
